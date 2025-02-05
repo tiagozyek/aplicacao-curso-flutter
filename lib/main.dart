@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   bool opacidade = true;
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -24,17 +25,18 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter: Primeiros Passos'),
-          leading: Icon(Icons.add_task),
+          leading: const Icon(Icons.add_task),
         ),
         body: AnimatedOpacity(
           opacity: opacidade ? 1.0 : 0.0,
           duration: const Duration(milliseconds: 500),
           child: Container(
-            color: Color.fromARGB(255, 208, 221, 237),
+            color: const Color.fromARGB(255, 208, 221, 237),
             child: ListView(
               children: const [
-                Padding(//aula 5.4
-                  padding: EdgeInsets.only(top:8),
+                Padding(
+                  //aula 5.4
+                  padding: EdgeInsets.only(top: 8),
                   child: Tasks(
                       'Estudar Flutter',
                       'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
@@ -52,8 +54,10 @@ class _MyAppState extends State<MyApp> {
                     'Meditar',
                     'https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg',
                     4),
-                Tasks('Jogar',
-                    'https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg', 0),
+                Tasks(
+                    'Jogar',
+                    'https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg',
+                    0),
                 SizedBox(
                   height: 100,
                 ),
@@ -142,7 +146,7 @@ class _TasksState extends State<Tasks> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 200,
                             child: Text(
                               widget.nome,
@@ -157,15 +161,15 @@ class _TasksState extends State<Tasks> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Container(
+                        child: SizedBox(
                           height: 52,
                           width: 52,
                           child: ElevatedButton(
                             onPressed: levelUp,
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.end,
-                              children: const [
+                              children: [
                                 Icon(Icons.arrow_drop_up),
                                 Text(
                                   'UP',
@@ -186,7 +190,7 @@ class _TasksState extends State<Tasks> {
                       padding: const EdgeInsets.only(
                         left: 8,
                       ),
-                      child: Container(
+                      child: SizedBox(
                         width: 200,
                         child: LinearProgressIndicator(
                           color: Colors.white,
@@ -200,7 +204,8 @@ class _TasksState extends State<Tasks> {
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
                         'Nivel: $level',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ],
@@ -221,7 +226,8 @@ class Difficulty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(//aula 5.4
+    return Container(
+      //aula 5.4
       child: Row(
         children: [
           Icon(Icons.star,
@@ -244,4 +250,3 @@ class Difficulty extends StatelessWidget {
     );
   }
 }
-
